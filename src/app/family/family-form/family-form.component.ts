@@ -133,8 +133,8 @@ export class FamilyFormComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  private deleteFamilyMember(index) {
-    this.family.familyMembers.splice(index);
+  private deleteFamilyMember(editedFamily) {
+    this.family = editedFamily;
     this.editedFamilySaver.emit(this.family);
   }
 
@@ -200,6 +200,12 @@ export class FamilyFormComponent implements OnInit, OnChanges, AfterViewInit {
     this.currentlyEditingFamilyMember = familyMember;
     this.indexOfCurrentlyEditingFamilyMember = index;
     this.mode='consent';
+  }
+
+  public viewHistory(index: number, familyMember: FamilyMember) {
+    this.currentlyEditingFamilyMember = familyMember;
+    this.indexOfCurrentlyEditingFamilyMember = index;
+    this.mode='history';
   }
 
   public saveFamily(event) {
